@@ -1,0 +1,50 @@
+/*
+ * Copyright (C) 2021 Josh Walters
+ * This file is part of crom.
+ *
+ * crom is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * crom is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with crom.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    id 'java'
+}
+
+group 'com.joshwalters'
+version '1.0'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compile 'com.github.bhlangonijr:chesslib:1.2.5'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    compile 'info.picocli:picocli:4.6.1'
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.joshwalters.chess.crom.Main'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
