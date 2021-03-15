@@ -73,6 +73,18 @@ A few openings have already been generated and included in this repo, they are i
 These opening studies have also been uploaded to [listudy](https://listudy.org/en/profile/CROM), where you can use
 spaced repetition to memorize the opening lines.
 
+# Create your own
+
+Make a folder `games`, and put the input PGNs you want to use. The games
+from [https://database.nikonoel.fr/](https://database.nikonoel.fr/) are recomended.
+
+Then modify `generate.sh` to include the opening you want to generate for, then run `generate.sh`. You must have first
+built the project JAR with:
+
+```bash
+./gradlew clean build jar
+```
+
 # License
 
 CROM is licensed under GPL version 3.
